@@ -27,24 +27,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build:prod --if-present
-    - name: Build Staging
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build:stage --if-present
-    - name: Build PreProd
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build:preprod --if-present
+    - run: npm run build:ci --if-present
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
-        name: markdown-widget-bundle.js
+        name: markdown-widget-bundles
         path: dist/
         retention-days: 5

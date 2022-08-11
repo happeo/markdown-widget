@@ -8,6 +8,7 @@
     "build:prod": "webpack --env production",
     "build:preprod":  "webpack --env preprod",
     "build:stage": "webpack --env stage",
+    "build:ci": "npm run build:prod && npm run build:preprod && npm run:build:stage ",
     "start": "webpack serve --env development",
     "pre-commit": "lint-staged",
     "lint": "eslint ."
