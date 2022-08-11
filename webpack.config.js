@@ -1,7 +1,29 @@
 const path = require("path");
+const webpack = require("webpack");
+const slugs = {
+  prod: "markdown-widget-psmb9nr3yickdvbiohf2-ac",
+  preprod: "pre-prod-slug",
+  stage: "markdown-widget-rptpuefxh6gg188andbw-ac",
+  development: "markdownpage-ivl0pnlu4mhpjlcydic",
+};
+
+const ourDirs = {
+  preprod: "./dist/preprod",
+  prod: "./dist/prod",
+  stage: "./dist/stage",
+  development: "./dist",
+};
+
+const getBuildType = (env) => {
+  if (env.production) return "production";
+  if (env.preprod) return "preprod";
+  if (env.development) return "development";
+  if (env.stage) return "stage";
+};
 
 module.exports = (env) => {
-  const isProd = env.production;
+  const buildType = getBuildType(env);
+  const isProd = buildType === "production";
 
   return {
     entry: path.join(__dirname, "src", "index.js"),
@@ -53,7 +75,12 @@ module.exports = (env) => {
     ],
     output: {
       filename: "bundle.js",
-      path: path.resolve(__dirname, "dist"),
+      path: path.resolve(__dirname, ourDirs[buildType]),
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.env.slug": JSON.stringify(slugs[buildType]),
+      }),
+    ],
   };
 };

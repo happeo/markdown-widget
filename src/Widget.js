@@ -34,7 +34,7 @@ const Widget = ({ id, editMode }) => {
     const newContent = e.target.value;
     setContent(newContent);
 
-    // widget api doesn't save empty string
+    //hidden text is necessary because widget api doesn't save empty string
 
     widgetApi
       .setContent(newContent || HIDDEN_TEXT_FOR_EMPTY_STRING)

@@ -8,7 +8,7 @@ class happeoCustomReactWidget extends HTMLElement {
     ReactDOM.render(<Widget id={uniqueId} editMode={mode === "edit"} />, this);
   }
 }
-const slug = "markdownpage-ivl0pnlu4mhpjlcydicf";
+const slug = process.env.slug;
 
 window.customElements.get(slug) ||
   window.customElements.define(slug, happeoCustomReactWidget);

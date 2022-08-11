@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config webpack.config.local.js",
-    "build": "webpack --env production",
+    "build:prod": "webpack --env production",
+    "build:preprod":  "webpack --env preprod",
+    "build:stage": "webpack --env stage",
     "start": "webpack serve --env development",
     "pre-commit": "lint-staged",
     "lint": "eslint ."
