@@ -1,0 +1,10 @@
+{
+    "logo": "./docs/images/logo.png",
+    "name": "Markdown Widget",
+    "shortDescription": "Render markdown on Happeo pages",
+    "targetSections": ["pages"],
+    "longDescription": "The Markdown Widget helps page editors to add content to Happeo pages as markdown. Upon saving the page, the markdown gets rendered as HTML on the page. Helpful for developers.",
+    "visuals": [
+        "./docs/images/visual.png"
+    ]
+}
