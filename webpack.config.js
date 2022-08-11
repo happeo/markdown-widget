@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const slugs = {
-  prod: "markdown-widget-psmb9nr3yickdvbiohf2-ac",
+  production: "markdown-widget-psmb9nr3yickdvbiohf2-ac",
   preprod: "pre-prod-slug",
   stage: "markdown-widget-rptpuefxh6gg188andbw-ac",
   development: "markdownpage-ivl0pnlu4mhpjlcydic",
@@ -9,7 +9,7 @@ const slugs = {
 
 const ourDirs = {
   preprod: "./dist/preprod",
-  prod: "./dist/prod",
+  production: "./dist/prod",
   stage: "./dist/stage",
   development: "./dist",
 };
@@ -21,8 +21,10 @@ const getBuildType = (env) => {
   if (env.stage) return "stage";
 };
 
+
 module.exports = (env) => {
   const buildType = getBuildType(env);
+  console.log("🚀 ~ file: webpack.config.js ~ line 27 ~ buildType", buildType)
   const isProd = buildType === "production";
 
   return {
