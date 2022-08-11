@@ -25,7 +25,8 @@ const getBuildType = (env) => {
 module.exports = (env) => {
   const buildType = getBuildType(env);
   console.log("🚀 ~ file: webpack.config.js ~ line 27 ~ buildType", buildType)
-  const isProd = buildType === "production";
+  const isProd = buildType !== "development";
+  console.log("🚀 ~ file: webpack.config.js ~ line 29 ~ isProd", isProd)
 
   return {
     entry: path.join(__dirname, "src", "index.js"),
