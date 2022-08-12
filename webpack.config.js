@@ -1,36 +1,44 @@
 const path = require("path");
 const webpack = require("webpack");
-const slugs = {
-  production: "markdown-widget-psmb9nr3yickdvbiohf2-ac",
-  preprod: "pre-prod-slug",
-  stage: "markdown-widget-rptpuefxh6gg188andbw-ac",
-  development: "markdownpage-ivl0pnlu4mhpjlcydic",
-};
 
-const ourDirs = {
-  preprod: "./dist/preprod",
-  production: "./dist/prod",
-  stage: "./dist/stage",
-  development: "./dist",
-};
+function getEnvVariables(env) {
+  if (env.production) {
+    return {
+      mode: "production",
+      slug: "markdown-widget-psmb9nr3yickdvbiohf2-ac",
+      outputFileName: "bundle.production.js",
+    };
+  }
 
-const getBuildType = (env) => {
-  if (env.production) return "production";
-  if (env.preprod) return "preprod";
-  if (env.development) return "development";
-  if (env.stage) return "stage";
-};
+  if (env.preprod) {
+    return {
+      mode: "production",
+      slug: "pre-prod-slug",
+      outputFileName: "bundle.preprod.js",
+    };
+  }
 
-
-module.exports = (env) => {
-  const buildType = getBuildType(env);
-  console.log("🚀 ~ file: webpack.config.js ~ line 27 ~ buildType", buildType)
-  const isProd = buildType !== "development";
-  console.log("🚀 ~ file: webpack.config.js ~ line 29 ~ isProd", isProd)
+  if (env.staging) {
+    return {
+      mode: "production",
+      slug: "markdown-widget-rptpuefxh6gg188andbw-ac",
+      outputFileName: "bundle.staging.js",
+    };
+  }
 
   return {
+    mode: "development",
+    slug: "markdownpage-ivl0pnlu4mhpjlcydicf",
+    outputFileName: "bundle.js",
+  };
+}
+
+module.exports = (env) => {
+console.log("🚀 ~ file: webpack.config.js ~ line 37 ~ env", env)
+  const { mode, slug, outputFileName } = getEnvVariables(env);
+  return {
     entry: path.join(__dirname, "src", "index.js"),
-    mode: isProd ? "production" : "development",
+    mode,
     module: {
       rules: [
         {
@@ -50,6 +58,11 @@ module.exports = (env) => {
         },
       ],
     },
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.env.slug": JSON.stringify(slug),
+      }),
+    ],
     devServer: {
       contentBase: "./dist",
       hot: false,
@@ -77,12 +90,12 @@ module.exports = (env) => {
       },
     ],
     output: {
-      filename: "bundle.js",
-      path: path.resolve(__dirname, ourDirs[buildType]),
+      filename: outputFileName,
+      path: path.resolve(__dirname, "dist"),
     },
     plugins: [
       new webpack.DefinePlugin({
-        "process.env.slug": JSON.stringify(slugs[buildType]),
+        "process.env.slug": JSON.stringify(slug),
       }),
     ],
   };
