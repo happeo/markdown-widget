@@ -34,7 +34,6 @@ function getEnvVariables(env) {
 }
 
 module.exports = (env) => {
-env)
   const { mode, slug, outputFileName } = getEnvVariables(env);
   return {
     entry: path.join(__dirname, "src", "index.js"),
