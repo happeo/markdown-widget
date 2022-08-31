@@ -34,7 +34,7 @@ function getEnvVariables(env) {
 }
 
 module.exports = (env) => {
-console.log("🚀 ~ file: webpack.config.js ~ line 37 ~ env", env)
+env)
   const { mode, slug, outputFileName } = getEnvVariables(env);
   return {
     entry: path.join(__dirname, "src", "index.js"),

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { toast } from "@happeouikit/toast";
-import { Card } from "@happeouikit/card";
+
 import styled from "styled-components";
 import widgetSDK from "@happeo/widget-sdk";
-import { padding300 } from "@happeouikit/layout";
-import { gray09 } from "@happeouikit/colors";
+import { ButtonSecondary } from "@happeouikit/buttons";
+
 import { MarkdownEditor } from "./components/markdown-editor";
 import { Loader } from "./components/loader";
-import { DEMO_TEXT, HIDDEN_TEXT_FOR_EMPTY_STRING } from "./constants";
+import { DEMO_TEXT } from "./constants";
 
 const Widget = ({ id, editMode }) => {
   const [widgetApi, setWidgetApi] = useState();
@@ -27,19 +27,26 @@ const Widget = ({ id, editMode }) => {
 
   const setSavedContentToState = async (widgetApi) => {
     const fetchedContent = await widgetApi.getContent();
-    setContent(fetchedContent || DEMO_TEXT);
+    setContent(fetchedContent);
   };
 
   const haddleContentChange = (e) => {
     const newContent = e.target.value;
     setContent(newContent);
 
-    //hidden text is necessary because widget api doesn't save empty string
-
-    widgetApi
-      .setContent(newContent || HIDDEN_TEXT_FOR_EMPTY_STRING)
-      .catch((e) => toast.error({ message: `Autosave failed` }));
+    if (widgetApi)
+      widgetApi
+        .setContent(newContent)
+        .catch((e) => toast.error({ message: `Autosave failed` }));
   };
+
+  const onAddDemoContent = useCallback(() => {
+    const newContent = content + DEMO_TEXT;
+    setContent(newContent),
+      widgetApi
+        .setContent(newContent)
+        .catch((e) => toast.error({ message: `Autosave failed` }));
+  }, [content, widgetApi]);
 
   const handleContentSave = async () => {
     widgetApi.setContent(content).then((res) => {});
@@ -52,26 +59,30 @@ const Widget = ({ id, editMode }) => {
   return (
     <Container>
       {editMode && (
-        <MarkdownEditor
-          content={content}
-          onMdChange={haddleContentChange}
-          onSave={handleContentSave}
-        />
+        <div style={{ position: "relative", marginBottom: "16px" }}>
+          <MarkdownEditor
+            content={content}
+            onMdChange={haddleContentChange}
+            onSave={handleContentSave}
+          />
+          <PositionTopRight>
+            <ButtonSecondary text="MD template" onClick={onAddDemoContent} />
+          </PositionTopRight>
+        </div>
       )}
-      <Card style={{ marginTop: 8 }}>
-        <widgetSDK.uikit.ContentRenderer type={"MARKDOWN"} content={content} />
-      </Card>
+
+      <widgetSDK.uikit.ContentRenderer type={"MARKDOWN"} content={content} />
     </Container>
   );
 };
 
-const Container = styled.div`
-  padding: ${padding300};
-  background-color: ${gray09};
-`;
-const StyledUl = styled.ul`
-  list-style: disc;
-  padding: ${padding300};
+const Container = styled.div``;
+
+const PositionTopRight = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 4px;
 `;
 
 export default Widget;
