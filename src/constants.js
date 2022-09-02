@@ -1,45 +1,140 @@
 export const DEMO_TEXT = `
-##This is a demo markdow, Please edit the page to add content and then click save on the right side-bar.
-
-Lorem markdownum: coegerat inlaesas altissima enim num, quo ora manu foramina
-exclamant silva spatium potior! Eleleusque satis thalamique quibus et totum
-platanus gurgite: frustra citharae amnis accendere fata lucemque Aetnen amictu.
-
-- Minantia nec amoris ducit
-- Excedere suarum
-- Agitata taurus
-- Qui ferendo nomina et te locum
-- Hibero certaminis
-
-Iura natura vel collaque iam haec genero, per dixit stetit Iovem hanc arbore
-modo cursus? E gentis adunco inquirit comitum Diomedeos debebit averserisque
-tellus inpune tactusque munimina tenentem, vicit naturale domino. Nota functa
-gelidumque perstat admota usque. *Lacrimae famam*, visae longe dare virtutem, in
-viscera formosus Ethemon, [id](https://developers.happeo.com) petunt, ut unde relinquam
-fecit. Invecta adesto **saxo** latus concutio Persidaque attonitos et totaque,
-non, est te sceleri.
-
-## Vobis hanc terrae
-
-Thebae abstemius, nervis, saturae. Et dixi sacri senatus discrimine illam, a
-aspicit moveoque ait partem ab vestigia quod temerarius resilire, Io et!
+# h1 Heading 8-)
+## h2 Heading
+### h3 Heading
+#### h4 Heading
+##### h5 Heading
+###### h6 Heading
 
 
-## Confugisse priorum Et canentis fugaverat modo quoque
+## Horizontal Rules
 
-Iuppiter adsuetam pectora virgineum amaris, pectine pressit ferinas actutum mox
-orbem summas que hostes amissi locus, duobus. Fallaci volucres silent prima
-hospes vicit, terra patuit fractaque? Agiturque manuque signis, eundo rabie
-**animal**? Carina idem rapido dieque simul triplex albentia cepimus quoque
-quodcumque. Aequor ab non quoque heu est similis mihi.
+___
 
-1. Suo verus tot
-2. Atra ait sortemque arbor silicem
-3. In adsumit praetendat innumeras in acerris vittisconcutiens
-4. In tristis in pectora revertentes inque tinxit
-5. Lambit sua
-6. Movit cum coniunx
+---
 
+***
+
+
+## Typographic replacements
+
+Enable typographer option to see result.
+
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+
+test.. test... test..... test?..... test!....
+
+!!!!!! ???? ,,  -- ---
+
+"Smartypants, double quotes" and 'single quotes'
+
+
+## Emphasis
+
+**This is bold text**
+
+__This is bold text__
+
+*This is italic text*
+
+_This is italic text_
+
+~~Strikethrough~~
+
+
+## Blockquotes
+
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
+
+
+## Lists
+
+Unordered
+
++ Create a list by starting a line with \` +
+  \`, \` -
+  \`, or \` *
+    \`
++ Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
+    * Ac tristique libero volutpat at
+    + Facilisis in pretium nisl aliquet
+    - Nulla volutpat aliquam velit
++ Very easy!
+
+Ordered
+
+1. Lorem ipsum dolor sit amet
+2. Consectetur adipiscing elit
+3. Integer molestie lorem at massa
+
+
+1. You can use sequential numbers...
+1. ...or keep all the numbers as 1
+
+Start numbering with offset:
+
+57. foo
+1. bar
+
+
+## Code
+
+Inline \`code\`
+
+Indented code
+
+    // Some comments
+    line 1 of code
+    line 2 of code
+    line 3 of code
+
+
+Block code "fences"
+
+\`\`\`
+Sample text here...
+\`\`\`
+
+Syntax highlighting
+
+\`\`\` js
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+\`\`\`
+
+## Tables
+
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+Right aligned columns
+
+| Option | Description |
+| ------:| -----------:|
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+
+## Links
+
+[link text](https://github.com/happeo/markdown-widget)
+
+[link with title](https://github.com/happeo/markdown-widget "title text!")
+
+
+## Images
+
+![Markdown](https://raw.githubusercontent.com/happeo/markdown-widget/main/docs/images/logo.png)
+![Markdown](https://raw.githubusercontent.com/happeo/markdown-widget/main/docs/images/logo.png "Markdown")
 `;
-
-export const HIDDEN_TEXT_FOR_EMPTY_STRING =  "[//]: <> (No text in this Mardown, You can delete this line and start editing)"
