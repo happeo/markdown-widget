@@ -14,6 +14,9 @@ module.exports = (env) => {
         filename: "index.html",
         inject: false,
       }),
+      new webpack.DefinePlugin({
+        "process.env.slug": JSON.stringify("markdownpage-ivl0pnlu4mhpjlcydicf"),
+      }),
     ],
     module: {
       rules: [
@@ -23,7 +26,7 @@ module.exports = (env) => {
           exclude: /node_modules/,
         },
         {
-          test: /\.m?jsx$/,
+          test: /\.(js|jsx)$/,
           exclude: /(node_modules|bower_components)/,
           use: {
             loader: "babel-loader",
@@ -31,10 +34,6 @@ module.exports = (env) => {
               presets: ["@babel/preset-react", "@babel/preset-env"],
             },
           },
-        },
-        {
-          test: /\.jsx$/,
-          use: "babel-loader",
         },
         {
           test: /\.css$/,
@@ -46,11 +45,6 @@ module.exports = (env) => {
         },
       ],
     },
-    plugins: [
-      new webpack.DefinePlugin({
-        "process.env.slug": JSON.stringify("markdownpage-ivl0pnlu4mhpjlcydicf"),
-      }),
-    ],
     devServer: {
       contentBase: "./dist",
       hot: false,
