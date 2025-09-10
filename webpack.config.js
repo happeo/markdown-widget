@@ -57,11 +57,6 @@ module.exports = (env) => {
         },
       ],
     },
-    plugins: [
-      new webpack.DefinePlugin({
-        "process.env.slug": JSON.stringify(slug),
-      }),
-    ],
     devServer: {
       contentBase: "./dist",
       hot: false,

@@ -5,7 +5,30 @@ Render markdown on Happeo pages
 
 ## Getting Started
 
-### Prerequisites
+### Option 1: Development with Dev Container (Recommended)
+
+The easiest way to get started is using the provided dev container configuration. This ensures a consistent development environment across all machines.
+
+#### Prerequisites
+- [Docker](https://docs.docker.com/get-docker/)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+#### Setup
+1. Clone the repository
+2. Open the project in VS Code
+3. When prompted, click "Reopen in Container" or use Command Palette: `Dev Containers: Reopen in Container`
+4. The dev container will automatically:
+   - Set up Node.js 16
+   - Install all dependencies with `yarn install`
+   - Configure VS Code with recommended extensions
+   - Set up linting and formatting
+
+The development server will be available at `http://localhost:8080` when running `yarn start` or `yarn dev`.
+
+### Option 2: Local Development
+
+#### Prerequisites
 
 Happeo Admin access rights
 
