@@ -95,7 +95,7 @@
   },
   "dependencies": {
     "@happeo/widget-sdk": "^0.2.0",
-    "react-markdown": "^8.0.3",
+    "react-markdown": "^9.0.0",
     "style-loader": "^2.0.0"
   },
   "happeo": {
