@@ -96,7 +96,7 @@
   "dependencies": {
     "@happeo/widget-sdk": "^0.2.0",
     "react-markdown": "^8.0.3",
-    "style-loader": "^2.0.0"
+    "style-loader": "^3.0.0"
   },
   "happeo": {
     "privateKeyPath": "\nPlease set the path of your ssh private key here. \nIt will be used to encrypt thee bundle during publish",
